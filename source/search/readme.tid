@@ -1,0 +1,14 @@
+created: 20220104181523942
+modified: 20220104181711222
+tags: 
+title: $:/plugins/kookma/search/readme
+type: text/vnd.tiddlywiki
+
+; Search
+Advanced search in fields, lets search in any fields with standard method or regular expressions.
+
+;Code and demo
+For learning plugin features, syntax, tutorial and examples see the plugin demo and code pages
+
+* Demo: https://kookma.github.io/TW-Search/
+* Code: https://github.com/kookma/TW-Search

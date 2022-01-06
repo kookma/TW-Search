@@ -1,0 +1,9 @@
+caption: Fields
+created: 20220104182024597
+list-before: $:/core/ui/AdvancedSearch/Filter
+modified: 20220106070638433
+tags: $:/tags/AdvancedSearch
+title: $:/plugins/kookma/search/ui/AdvancedSearch/Fields
+type: text/vnd.tiddlywiki
+
+{{$:/plugins/kookma/search/interface}}

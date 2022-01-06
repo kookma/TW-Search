@@ -1,0 +1,50 @@
+created: 20220106070554427
+modified: 20220106212136581
+tags: show-content
+title: $:/plugins/kookma/search/interface
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+
+Search in fields... &nbsp;
+<span class=tc-advanced-search-check><$checkbox field="case-sensitive" tiddler=<<optionTid>> checked="casesensitive" disabled={{{[<optionTid>get[search-mode]match[regexp]then[yes]]}}}> case sensitive</$checkbox></span> &nbsp;
+<span class=tc-advanced-search-check title="treats the search string as a list of tokens"><$radio field="search-mode" tiddler=<<optionTid>> value="words" default="words"> words</$radio></span> &nbsp;
+<span class=tc-advanced-search-check title="requires an exact match"><$radio field="search-mode" tiddler=<<optionTid>> value="literal"> literal</$radio></span> &nbsp;
+<span class=tc-advanced-search-check title="treats the search string as a regular expression"><$radio field="search-mode" tiddler=<<optionTid>> value="regexp"> regexp</$radio></span> &nbsp;
+
+
+<div class=tc-search>
+<$edit-text tiddler=<<searchTid>> field=text type=search tag=input placeholder='search terms' default=''/>
+
+
+<$select tiddler=<<optionTid>>  field="field" default="*any">
+	<optgroup label=Selected>
+		<$list filter=<<selectedFields>> variable=field>
+			<option value=<<field>>><<field>></option>
+		</$list>
+	</optgroup>
+	<optgroup label=Other>
+	<option value='*any' title="all fields except text body">*all</option>
+		<$list filter='[subfilter<allFields>] -[enlist<selectedFields>]' variable=field>
+			<option value=<<field>>><<field>></option>
+		</$list>
+	</optgroup>
+</$select>
+
+<!-- clear button and tbular/plain output switch button -->
+<$reveal stateTitle=<<searchTid>> stateField=text type=nomatch text=''>
+<!-- clear button -->
+<$button class=tc-btn-invisible tooltip="clear search box">
+<$action-setfield $tiddler=<<searchTid>> $field=text $value=''/>
+{{$:/core/images/close-button}}
+</$button>
+<!-- switch output format button -->
+<$button class=tc-btn-invisible tooltip="toggle tubular/plain format">
+<$action-listops $tiddler=<<optionTid>> $field="format" $subfilter="+[toggle[tabular]]" />
+{{$:/core/images/menu-button}}
+</$button>
+</$reveal>
+</div>
+<div class="tc-search-results">
+<$transclude tiddler="$:/plugins/kookma/search/results" mode=block/>
+</div>

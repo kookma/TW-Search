@@ -1,0 +1,20 @@
+caption: Search in Fields
+created: 20220106214308574
+list-after: $:/core/ui/ControlPanel/Settings/TiddlyWiki
+modified: 20220106215746581
+tags: $:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar
+title: $:/plugins/kookma/search/ui/ControlPanel/Settings
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+
+These settings let you customise the behaviour of Search in Fields plugin.
+
+---
+
+;Show Search setting in more sidebar
+:<$checkbox tiddler="$:/plugins/kookma/search/ui/ControlPanel/Settings" tag="$:/tags/MoreSideBar"> Show setting in more sidebar</$checkbox>
+
+;Options
+: <$link to=<<fieldsTid>>>Fields in tabular format</$link> &nbsp; <$edit-text tiddler=<<fieldsTid>> field="text" tag=input defualt="" placeholder="enter fields name " class="kk-search-input"/>
+

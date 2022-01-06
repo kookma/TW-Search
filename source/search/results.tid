@@ -1,0 +1,72 @@
+created: 20220104182348949
+modified: 20220106214108469
+tags: show-content
+title: $:/plugins/kookma/search/results
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+
+\define field-search(field) 
+<$let
+	regexpFilter = """[subfilter<searchScope>regexp:$field$<search-terms>]"""
+	normalFilter = """[subfilter<searchScope>search:$field$:$(flag-list)$[$(search-terms)$]]"""
+	searchFilter = {{{ [<search-mode>match[regexp]then<regexpFilter>else<normalFilter>] }}}
+	matches      = {{{[subfilter<searchFilter>count[]]}}}
+	resultformat = {{{ [<optionTid>get[format]] }}}
+	tableCosl    ={{{[<fieldsTid>get[text]]}}}
+	pagingStat   = {{{ [<matches>compare:integer:gt[25]then[yes]else[no]] }}}
+>
+<$list filter="""[subfilter<searchFilter>limit[1]]""" >
+<b>$field$ <small>(<$text text=<<matches>>/>)</small></b>
+<$reveal default=<<resultformat>> type=match text='tabular'><!--display results in tabular format -->
+<$macrocall $name=table-dynamic 
+    filter=<<searchFilter>> 
+    fields=<<tableCosl>>
+    class="w-100" 
+    editButton="no" 
+    pagination=<<pagingStat>>
+    stateTiddler="advancedsearch/$field$"
+/>
+</$reveal>
+<$reveal default=<<resultformat>> type=nomatch text='tabular'><!--display results in plain format -->
+<$list  filter=<<searchFilter>> >
+<dd><$link/></dd>
+</$list>
+</$reveal>
+</$list>
+
+</$let>
+\end
+
+
+<!-- display results -->
+
+<$let
+ field-list      = {{{ [<optionTid>get[field]match[*any]then[*]] [<optionTid>get[field]]  +[first[1]] :else[[*]] }}}
+ casesensitive   = {{{ [<optionTid>get[case-sensitive]] }}}
+ search-mode     = {{{ [<optionTid>get[search-mode]] :else[[words]]}}}
+ flag-list       = {{{ [<search-mode>] [<casesensitive>] +[!is[blank]join[,]] }}}
+ search-terms    = {{{ [<searchTid>get[text]else[]] }}}
+ filterMinLength = {{$:/config/Search/MinLength}}
+>
+
+<$list filter="[<search-terms>minlength<filterMinLength>limit[1]]" 
+       emptyMessage={{{ [<search-terms>!is[blank]then[Search term is too short]] }}} variable=ignore>
+
+<$reveal default=<<field-list>> type=match text='*'><!-- search in all fields excluding text field -->
+<dl>
+<$list filter=<<allFields>> variable=field>
+<$macrocall $name=field-search field=<<field>> />
+</$list>
+</dl>
+</$reveal>
+
+<$reveal default=<<field-list>> type=nomatch text='*'><!--search in a single field -->
+<dl>
+<$macrocall $name=field-search field=<<field-list>>/>
+</dl>
+</$reveal>
+
+</$list>
+
+</$let>
