@@ -1,20 +1,20 @@
 created: 20220104182348949
-modified: 20220106214108469
+modified: 20220107152103968
 tags: show-content
-title: $:/plugins/kookma/search/results
+title: $:/plugins/kookma/search/ui/results
 type: text/vnd.tiddlywiki
 
 \import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
 
 \define field-search(field) 
 <$let
-	regexpFilter = """[subfilter<searchScope>regexp:$field$<search-terms>]"""
-	normalFilter = """[subfilter<searchScope>search:$field$:$(flag-list)$[$(search-terms)$]]"""
-	searchFilter = {{{ [<search-mode>match[regexp]then<regexpFilter>else<normalFilter>] }}}
-	matches      = {{{[subfilter<searchFilter>count[]]}}}
-	resultformat = {{{ [<optionTid>get[format]] }}}
-	tableCosl    ={{{[<fieldsTid>get[text]]}}}
-	pagingStat   = {{{ [<matches>compare:integer:gt[25]then[yes]else[no]] }}}
+    regexpFilter = """[subfilter<searchScope>regexp:$field$<search-terms>]"""
+    normalFilter = """[subfilter<searchScope>search:$field$:$(flag-list)$[$(search-terms)$]]"""
+    searchFilter = {{{ [<search-mode>match[regexp]then<regexpFilter>else<normalFilter>] }}}
+    matches      = {{{[subfilter<searchFilter>count[]]}}}
+    resultformat = {{{ [<optionTid>get[format]] }}}
+    tableCosl    = {{{[<columnsTid>get[text]]}}}
+    pagingStat   = {{{ [<matches>compare:integer:gt[25]then[yes]else[no]] }}}
 >
 <$list filter="""[subfilter<searchFilter>limit[1]]""" >
 <b>$field$ <small>(<$text text=<<matches>>/>)</small></b>
@@ -42,7 +42,8 @@ type: text/vnd.tiddlywiki
 <!-- display results -->
 
 <$let
- field-list      = {{{ [<optionTid>get[field]match[*any]then[*]] [<optionTid>get[field]]  +[first[1]] :else[[*]] }}}
+ flist-filter    = "[<sFieldsTid>indexes[]sort[title]] :else[[title]]"
+ fields          = {{{[<sFieldsTid>get[allfld-status]match[all]then<allFields>else<flist-filter>]}}}
  casesensitive   = {{{ [<optionTid>get[case-sensitive]] }}}
  search-mode     = {{{ [<optionTid>get[search-mode]] :else[[words]]}}}
  flag-list       = {{{ [<search-mode>] [<casesensitive>] +[!is[blank]join[,]] }}}
@@ -50,22 +51,17 @@ type: text/vnd.tiddlywiki
  filterMinLength = {{$:/config/Search/MinLength}}
 >
 
+* fields: <$text text=<<fields>>/>
+* allfld-status: {{{[<sFieldsTid>get[allfld-status]]}}}
+
 <$list filter="[<search-terms>minlength<filterMinLength>limit[1]]" 
        emptyMessage={{{ [<search-terms>!is[blank]then[Search term is too short]] }}} variable=ignore>
-
-<$reveal default=<<field-list>> type=match text='*'><!-- search in all fields excluding text field -->
+<!-- generate the output -->
 <dl>
-<$list filter=<<allFields>> variable=field>
+<$list filter="[subfilter<fields>]" variable=field>
 <$macrocall $name=field-search field=<<field>> />
 </$list>
 </dl>
-</$reveal>
-
-<$reveal default=<<field-list>> type=nomatch text='*'><!--search in a single field -->
-<dl>
-<$macrocall $name=field-search field=<<field-list>>/>
-</dl>
-</$reveal>
 
 </$list>
 

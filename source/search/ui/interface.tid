@@ -1,0 +1,35 @@
+created: 20220106070554427
+modified: 20220107144519335
+tags: show-content
+title: $:/plugins/kookma/search/ui/interface
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+
+Search in fields... &nbsp;
+<span class=tc-advanced-search-check><$checkbox field="case-sensitive" tiddler=<<optionTid>> checked="casesensitive" disabled={{{[<optionTid>get[search-mode]match[regexp]then[yes]]}}}> case sensitive</$checkbox></span> &nbsp;<span class=tc-advanced-search-check title="treats the search string as a list of tokens"><$radio field="search-mode" tiddler=<<optionTid>> value="words" default="words"> words</$radio></span> &nbsp;
+<span class=tc-advanced-search-check title="requires an exact match"><$radio field="search-mode" tiddler=<<optionTid>> value="literal"> literal</$radio></span> &nbsp;<span class=tc-advanced-search-check title="treats the search string as a regular expression"><$radio field="search-mode" tiddler=<<optionTid>> value="regexp"> regexp</$radio></span> &nbsp;
+
+
+<div class=tc-search>
+<$edit-text tiddler=<<searchTid>> field=text type=search tag=input placeholder='search terms' default=''/>
+<!-- fields selection drop down -->
+<$transclude tiddler="$:/plugins/kookma/search/ui/fields-selection" />
+
+<!-- clear button and tbular/plain output switch button -->
+<$reveal stateTitle=<<searchTid>> stateField=text type=nomatch text=''>
+<!-- clear button -->
+<$button class=tc-btn-invisible tooltip="clear search box">
+<$action-setfield $tiddler=<<searchTid>> $field=text $value=''/>
+{{$:/core/images/close-button}}
+</$button>
+<!-- switch output format button -->
+<$button class=tc-btn-invisible tooltip="toggle tubular/plain format">
+<$action-listops $tiddler=<<optionTid>> $field="format" $subfilter="+[toggle[tabular]]" />
+{{$:/core/images/menu-button}}
+</$button>
+</$reveal>
+</div>
+<div class="tc-search-results">
+<$transclude tiddler="$:/plugins/kookma/search/ui/results" mode=block/>
+</div>

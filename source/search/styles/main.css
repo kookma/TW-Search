@@ -1,0 +1,22 @@
+.tc-advanced-search-check input {
+	width:auto;
+}
+.kk-search-input {
+	width:50%;
+}
+/* fields drop down */
+
+.kk-search-dropdown {
+	max-height:calc(100vh - 2.5em);
+	overflow-y:auto;
+}
+.kk-search-dropdown input{
+	width:auto;
+	margin-left:20px;
+}
+
+.kk-search-label{
+	font-weight:bold;
+	font-size: 0.9em;
+	padding-left:6px;
+}

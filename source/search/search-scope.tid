@@ -1,0 +1,7 @@
+created: 20220108100549680
+modified: 20220108100601737
+tags: 
+title: $:/config/Search/search-scope
+type: text/vnd.tiddlywiki
+
+[all[tiddlers]!is[system]]

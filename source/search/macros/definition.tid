@@ -1,12 +1,16 @@
 created: 20220104181920406
-modified: 20220106220110127
-tags: $:/tags/Search/Macro show-content
+modified: 20220108100948038
+tags: $:/tags/Search/Macro
 title: $:/plugins/kookma/search/macros/definition
 type: text/vnd.tiddlywiki
 
-\define searchTid() $:/temp/advancedsearch/input
-\define optionTid() $:/temp/advancedsearch/option
-\define fieldsTid() $:/config/Search/tabular-columns
-\define searchScope() [all[tiddlers]!is[system]] -[[$(searchTid)$]]
-\define selectedFields() title tags text caption keywords author
-\define allFields() $(searchScope)$+[fields[]sort[]] -text
+\define searchTid()  $:/temp/advancedsearch/input
+\define optionTid()  xx$:/temp/search-in-fields/option
+\define sFieldsTid() xx$:/temp/search-in-fields/selected-fields
+
+\define columnsTid()        $:/config/Search/tabular-columns
+\define primaryfieldsTid()  $:/config/Search/primary-fields
+\define searchScopeTid()    $:/config/Search/search-scope
+
+\define searchScope()   [subfilter{$(searchScopeTid)$}] -[[$(searchTid)$]]
+\define allFields()     $(searchScope)$+[fields[]sort[title]] -text -type
