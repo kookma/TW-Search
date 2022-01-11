@@ -1,6 +1,10 @@
+.tc-advanced-search input[type=radio] { width: auto; }
+.tc-advanced-search input[type=checkbox] { width: auto; }
+/*
 .tc-advanced-search-check input {
 	width:auto;
 }
+*/
 .kk-search-input {
 	width:50%;
 }
@@ -19,4 +23,10 @@
 	font-weight:bold;
 	font-size: 0.9em;
 	padding-left:6px;
+}
+
+/* */
+.kk-search-tubular{
+	max-width: 100%;
+	overflow-x: auto;
 }

@@ -1,7 +1,7 @@
 caption: Search in Fields
 created: 20220106214308574
 list-after: $:/core/ui/ControlPanel/Settings/TiddlyWiki
-modified: 20220108104734707
+modified: 20220111145509385
 tags: $:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar
 title: $:/plugins/kookma/search/ui/ControlPanel/Settings
 type: text/vnd.tiddlywiki
@@ -15,14 +15,22 @@ These settings let you customise the behaviour of Search in Fields plugin.
 ;Show Search setting in more sidebar
 :<$checkbox tiddler="$:/plugins/kookma/search/ui/ControlPanel/Settings" tag="$:/tags/MoreSideBar"> Show setting in more sidebar</$checkbox>
 
+; Enable Search in fields
+:<$checkbox tiddler="$:/plugins/kookma/search/ui/AdvancedSearch/Fields" tag="$:/tags/AdvancedSearch"> Enable Search in $:/AdvancedSearch</$checkbox>
+
 ;Options
 :<label class="kk-switch-label"><$link to=<<searchScopeTid>>>Search scope</$link></label><$edit-text tiddler=<<searchScopeTid>> field="text" tag=input defualt="" placeholder="enter a valid filter " class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<searchScopeTid>>/>""">{{$:/core/images/refresh-button}}</$button>
 
-:<label class="kk-switch-label"><$link to=<<columnsTid>>>Fields in tabular format</$link></label><$edit-text tiddler=<<columnsTid>> field="text" tag=input defualt="" placeholder="enter fields name " class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<searchScopeTid>>/>""">{{$:/core/images/refresh-button}}</$button>
+:<label class="kk-switch-label"><$link to=<<primaryfieldsTid>>>Primary fields</$link></label><$edit-text tiddler=<<primaryfieldsTid>> field="text" tag=input defualt="" placeholder="enter field name, e.g fld01 [[field two]] " class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<primaryfieldsTid>>/>""">{{$:/core/images/refresh-button}}</$button>
+
+:<label class="kk-switch-label"><$link to=<<excludefieldsTid>>>Excluded fields</$link></label><$edit-text tiddler=<<excludefieldsTid>> field="text" tag=input defualt="" placeholder="enter field name, e.g fld01 [[field two]] " class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<excludefieldsTid>>/>""">{{$:/core/images/refresh-button}}</$button>
+
+:<label class="kk-switch-label"><$link to=<<columnsTid>>>Table columns</$link></label><$edit-text tiddler=<<columnsTid>> field="text" tag=input defualt="" placeholder="enter columns(fields) name" class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<columnsTid>>/>""">{{$:/core/images/refresh-button}}</$button>
+
 
 <style>
 .kk-switch-label{
-  width:170px;
+  width:120px;
   display: inline-block;
 	margin-bottom:0.8em;
 }

@@ -1,0 +1,10 @@
+created: 20220111092406010
+modified: 20220111151349579
+tags: 
+title: $:/plugins/kookma/search/ui/options
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+
+<span class=tc-advanced-search-check><$checkbox field="case-sensitive" tiddler=<<optionTid>> checked="casesensitive" disabled={{{[<optionTid>get[search-mode]match[regexp]then[yes]]}}}> case sensitive</$checkbox></span> &nbsp;<span class=tc-advanced-search-check title="treats the search string as a list of tokens"><$radio field="search-mode" tiddler=<<optionTid>> value="words" default="words"> words</$radio></span> &nbsp;
+<span class=tc-advanced-search-check title="requires an exact match"><$radio field="search-mode" tiddler=<<optionTid>> value="literal"> literal</$radio></span> &nbsp;<span class=tc-advanced-search-check title="treats the search string as a regular expression"><$radio field="search-mode" tiddler=<<optionTid>> value="regexp"> regexp</$radio></span> &nbsp;

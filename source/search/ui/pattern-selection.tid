@@ -1,0 +1,24 @@
+created: 20220111171925816
+modified: 20220111173129084
+tags: 
+title: $:/plugins/kookma/search/ui/pattern-selection
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+<span class=tc-popup-keep>
+<$button popup=<<qualify $:/state/search/patternDropdown>> class=tc-btn-invisible tooltip="select a regex pattern">
+{{$:/core/images/gitter}}
+</$button>
+</span>
+
+<$reveal state=<<qualify $:/state/search/patternDropdown>> type=popup position=belowleft animate=yes>
+<$set name="tv-show-missing-links" value="yes">
+<$linkcatcher actions="""<$action-setfield $tiddler="$:/temp/advancedsearch" text=<<navigateTo>>/><$action-setfield $tiddler="$:/temp/advancedsearch/input" text=<<navigateTo>>/><$action-setfield $tiddler="$:/temp/advancedsearch/refresh" text="yes"/><$action-sendmessage $message="tm-focus-selector" $param='.tc-advanced-search input' />""">
+<div class=tc-block-dropdown-wrapper>
+<div class="tc-block-dropdown tc-edit-type-dropdown">
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/Search/Pattern]]"><$link to={{!!pattern}}><$transclude field=description/></$link>
+</$list>
+</div>
+</div>
+</$linkcatcher>
+</$set>

@@ -1,0 +1,7 @@
+created: 20220111173433100
+description: Start with numbers
+modified: 20220111174324332
+pattern: ^[\d].+$
+tags: $:/tags/Search/Pattern
+title: $:/plugins/kookma/search/patterns/start-with-number
+type: text/vnd.tiddlywiki

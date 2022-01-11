@@ -1,6 +1,6 @@
 created: 20220104182348949
-modified: 20220107152103968
-tags: show-content
+modified: 20220111160220188
+tags: 
 title: $:/plugins/kookma/search/ui/results
 type: text/vnd.tiddlywiki
 
@@ -17,8 +17,8 @@ type: text/vnd.tiddlywiki
     pagingStat   = {{{ [<matches>compare:integer:gt[25]then[yes]else[no]] }}}
 >
 <$list filter="""[subfilter<searchFilter>limit[1]]""" >
+<$reveal default=<<resultformat>> type=match text='tabular' tag=div class="kk-search-tubular"><!--display results in tabular format -->
 <b>$field$ <small>(<$text text=<<matches>>/>)</small></b>
-<$reveal default=<<resultformat>> type=match text='tabular'><!--display results in tabular format -->
 <$macrocall $name=table-dynamic 
     filter=<<searchFilter>> 
     fields=<<tableCosl>>
@@ -29,9 +29,14 @@ type: text/vnd.tiddlywiki
 />
 </$reveal>
 <$reveal default=<<resultformat>> type=nomatch text='tabular'><!--display results in plain format -->
-<$list  filter=<<searchFilter>> >
+<dl>
+<dt>$field$ <small>(<$text text=<<matches>>/>)</small></dt>
+<$list filter=<<searchFilter>> >
+<span class={{{[<currentTiddler>addsuffix[-primaryList]] -[[$:/temp/advancedsearch/selected-item]get[text]] +[then[]else[tc-list-item-selected]] }}}>
 <dd><$link/></dd>
+</span>
 </$list>
+</dl>
 </$reveal>
 </$list>
 
@@ -51,18 +56,15 @@ type: text/vnd.tiddlywiki
  filterMinLength = {{$:/config/Search/MinLength}}
 >
 
-* fields: <$text text=<<fields>>/>
-* allfld-status: {{{[<sFieldsTid>get[allfld-status]]}}}
 
 <$list filter="[<search-terms>minlength<filterMinLength>limit[1]]" 
        emptyMessage={{{ [<search-terms>!is[blank]then[Search term is too short]] }}} variable=ignore>
 <!-- generate the output -->
-<dl>
+<div class="tc-search-results">
 <$list filter="[subfilter<fields>]" variable=field>
 <$macrocall $name=field-search field=<<field>> />
 </$list>
-</dl>
-
+</div>
 </$list>
 
 </$let>

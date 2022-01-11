@@ -1,0 +1,44 @@
+created: 20220106070554427
+modified: 20220111170804296
+tags: 
+title: $:/plugins/kookma/search/ui/inputs
+type: text/vnd.tiddlywiki
+
+\import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+
+<!-- search options ui -->
+Search in fields... &nbsp;<$transclude tiddler="$:/plugins/kookma/search/ui/options" mode=inline />
+
+<div class="tc-search tc-advanced-search">
+<$edit-text tiddler=<<searchTid>> field=text type=search tag=input default='' placeholder='search terms'
+   refreshTitle="$:/temp/advancedsearch/refresh"
+   focus={{$:/config/Search/AutoFocus}}
+	 inputActions='<$action-setfield $tiddler="$:/temp/advancedsearch" text={{{ [<searchTid>get[text]] }}}/>'
+/>
+
+<!-- fields selection drop down -->
+<$transclude tiddler="$:/plugins/kookma/search/ui/fields-selection" />
+
+<!-- regexp pattern selection -->
+<$list filter="[<optionTid>get[search-mode]match[regexp]]" variable=ignore><!-- disp if regexp search mode is selected -->
+<$transclude tiddler="$:/plugins/kookma/search/ui/pattern-selection" />
+</$list>
+
+<!-- clear button and tbular/plain output switch button -->
+<$reveal stateTitle=<<searchTid>> stateField=text type=nomatch text=''>
+<!-- clear button -->
+<$button class=tc-btn-invisible tooltip="clear search box">
+<$action-setfield $tiddler=<<searchTid>> $field=text $value=''/>
+{{$:/core/images/close-button}}
+</$button>
+<!-- switch output format button -->
+<$button class=tc-btn-invisible tooltip="toggle tubular/plain format">
+<$action-listops $tiddler=<<optionTid>> $field="format" $subfilter="+[toggle[tabular]]" />
+{{$:/core/images/menu-button}}
+</$button>
+</$reveal>
+</div>
+
+<div class="tc-search-results">
+<$transclude tiddler="$:/plugins/kookma/search/ui/results" mode=block/>
+</div>
