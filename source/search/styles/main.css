@@ -19,13 +19,29 @@
 	margin-left:20px;
 }
 
+/* field seclection */
 .kk-search-label{
 	font-weight:bold;
 	font-size: 0.9em;
 	padding-left:6px;
+	padding-right:6px;
+	
+	display:flex;
+	justify-content:space-between;
+	
+}
+.kk-search-label .tc-btn-invisible{
+	opacity:0.4;
+}
+.kk-search-label:hover .tc-btn-invisible{
+	opacity:1;
+}
+.kk-search-label .tc-btn-invisible svg{
+	width:  1em;
+	height: 1em;
 }
 
-/* */
+/* Tabular output */
 .kk-search-tubular{
 	max-width: 100%;
 	overflow-x: auto;

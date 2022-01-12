@@ -1,12 +1,12 @@
 created: 20220104181920406
-modified: 20220111152047237
+modified: 20220112034924060
 tags: $:/tags/Search/Macro
 title: $:/plugins/kookma/search/macros/definition
 type: text/vnd.tiddlywiki
 
 \define searchTid()  $:/temp/advancedsearch/input
-\define optionTid()  xx$:/temp/search-in-fields/option
-\define sFieldsTid() xx$:/temp/search-in-fields/selected-fields
+\define optionTid()  $:/temp/search-in-fields/option
+\define sFieldsTid() $:/temp/search-in-fields/selected-fields
 
 \define searchScopeTid()    $:/config/Search/search-scope
 \define primaryfieldsTid()  $:/config/Search/primary-fields

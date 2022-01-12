@@ -1,12 +1,23 @@
 created: 20220107091357912
-modified: 20220108050215062
+modified: 20220112171755464
 tags: 
 title: $:/plugins/kookma/search/ui/fields-selection
 type: text/vnd.tiddlywiki
 
 \import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
 
-<$vars disabledStatus={{{ [<sFieldsTid>get[allfld-status]match[all]then[yes]] }}} >
+\define clearfields(filter)
+<!-- check if *all is not activated and at least one field has been selected -->
+<$list filter="[<sFieldsTid>indexes[]] :intersection[subfilter<__filter__>] +[limit[1]] [<disabledStatus>!match[yes]] +[count[]compare:integer:gteq[2]]" variable=ignore>
+<$button class="tc-btn-invisible" tooltip="Remove selected fields"> {{$:/core/images/close-all-button}}
+<$list filter=<<__filter__>> variable=fieldname>
+<$action-setfield $tiddler=<<sFieldsTid>> $index=<<fieldname>> />
+</$list>
+</$button>
+</$list>
+\end
+
+<$vars disabledStatus={{{ [<sFieldsTid>get[allfld-status]match[all]then[yes]] [<sFieldsTid>is[missing]then[yes]] }}} >
 <span class="tc-popup-keep">
 <$button popup=<<qualify "$:/state/search/fieldsDropdown">> class="tc-btn-invisible" tooltip="select a search filter">
 {{$:/core/images/down-arrow}}
@@ -17,13 +28,19 @@ type: text/vnd.tiddlywiki
 <$set name="tv-show-missing-links" value="yes">
 <div class="tc-block-dropdown-wrapper">
 <div class="tc-block-dropdown tc-edit-type-dropdown kk-search-dropdown">
-<div class="kk-search-label">Primary fields</div>
+<div class="kk-search-label">
+<span>Primary fields</span>
+<$macrocall $name=clearfields filter="[<primaryfieldsTid>get[text]enlist-input[]]" />
+</div> 
 <$list filter="[<primaryfieldsTid>get[text]enlist-input[]]" variable=fieldname>
-<$checkbox tiddler=<<sFieldsTid>> index=<<fieldname>> checked="x" disabled=<<disabledStatus>>> <$text text=<<fieldname>>/></$checkbox><br>
+<$checkbox tiddler=<<sFieldsTid>> index=<<fieldname>> checked="x" disabled=<<disabledStatus>> > <$text text=<<fieldname>>/></$checkbox><br>
 </$list>
 
-<div class="kk-search-label">Other fields</div>
-<$checkbox tiddler=<<sFieldsTid>> field="allfld-status" checked="all"> *all</$checkbox><br>
+<div class="kk-search-label">
+<span>Primary fields</span>
+<$macrocall $name=clearfields filter="[subfilter<allFields>] -[<primaryfieldsTid>get[text]enlist-input[]]" />
+</div> 
+<$checkbox tiddler=<<sFieldsTid>> field="allfld-status" checked="all" unchecked="" default="all"> *all -[excluded]</$checkbox><br>
 <$list filter="[subfilter<allFields>] -[<primaryfieldsTid>get[text]enlist-input[]]" variable=fieldname>
 <$checkbox tiddler=<<sFieldsTid>> index=<<fieldname>> checked="x" disabled=<<disabledStatus>> > <$text text=<<fieldname>>/></$checkbox><br>
 </$list>

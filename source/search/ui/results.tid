@@ -1,5 +1,5 @@
 created: 20220104182348949
-modified: 20220111160220188
+modified: 20220112123639124
 tags: 
 title: $:/plugins/kookma/search/ui/results
 type: text/vnd.tiddlywiki
@@ -47,7 +47,7 @@ type: text/vnd.tiddlywiki
 <!-- display results -->
 
 <$let
- flist-filter    = "[<sFieldsTid>indexes[]sort[title]] :else[[title]]"
+ flist-filter    = "[<sFieldsTid>indexes[]sort[title]] :else[[all]]"
  fields          = {{{[<sFieldsTid>get[allfld-status]match[all]then<allFields>else<flist-filter>]}}}
  casesensitive   = {{{ [<optionTid>get[case-sensitive]] }}}
  search-mode     = {{{ [<optionTid>get[search-mode]] :else[[words]]}}}
