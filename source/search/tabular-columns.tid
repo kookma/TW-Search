@@ -1,7 +1,7 @@
 created: 20220106212537248
-modified: 20220106220110123
+modified: 20220113173456461
 tags: 
 title: $:/config/Search/tabular-columns
 type: text/vnd.tiddlywiki
 
-tbl-expand title tags
+tbl-expand title tags created

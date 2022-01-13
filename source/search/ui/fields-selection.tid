@@ -1,5 +1,5 @@
 created: 20220107091357912
-modified: 20220112171755464
+modified: 20220113142726885
 tags: 
 title: $:/plugins/kookma/search/ui/fields-selection
 type: text/vnd.tiddlywiki
@@ -37,7 +37,7 @@ type: text/vnd.tiddlywiki
 </$list>
 
 <div class="kk-search-label">
-<span>Primary fields</span>
+<span>Other fields</span>
 <$macrocall $name=clearfields filter="[subfilter<allFields>] -[<primaryfieldsTid>get[text]enlist-input[]]" />
 </div> 
 <$checkbox tiddler=<<sFieldsTid>> field="allfld-status" checked="all" unchecked="" default="all"> *all -[excluded]</$checkbox><br>

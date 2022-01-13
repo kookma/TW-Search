@@ -1,7 +1,7 @@
 caption: Search in Fields
 created: 20220106214308574
 list-after: $:/core/ui/ControlPanel/Settings/TiddlyWiki
-modified: 20220111145509385
+modified: 20220113123746576
 tags: $:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar
 title: $:/plugins/kookma/search/ui/ControlPanel/Settings
 type: text/vnd.tiddlywiki

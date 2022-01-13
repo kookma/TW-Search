@@ -1,5 +1,5 @@
 created: 20220104182348949
-modified: 20220112123639124
+modified: 20220113192453094
 tags: 
 title: $:/plugins/kookma/search/ui/results
 type: text/vnd.tiddlywiki
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 \define field-search(field) 
 <$let
     regexpFilter = """[subfilter<searchScope>regexp:$field$<search-terms>]"""
-    normalFilter = """[subfilter<searchScope>search:$field$:$(flag-list)$[$(search-terms)$]]"""
+    normalFilter = """[subfilter<searchScope>search:$field$:$(flag-list)$<search-terms>]"""
     searchFilter = {{{ [<search-mode>match[regexp]then<regexpFilter>else<normalFilter>] }}}
     matches      = {{{[subfilter<searchFilter>count[]]}}}
     resultformat = {{{ [<optionTid>get[format]] }}}
@@ -32,9 +32,7 @@ type: text/vnd.tiddlywiki
 <dl>
 <dt>$field$ <small>(<$text text=<<matches>>/>)</small></dt>
 <$list filter=<<searchFilter>> >
-<span class={{{[<currentTiddler>addsuffix[-primaryList]] -[[$:/temp/advancedsearch/selected-item]get[text]] +[then[]else[tc-list-item-selected]] }}}>
 <dd><$link/></dd>
-</span>
 </$list>
 </dl>
 </$reveal>
@@ -47,8 +45,8 @@ type: text/vnd.tiddlywiki
 <!-- display results -->
 
 <$let
- flist-filter    = "[<sFieldsTid>indexes[]sort[title]] :else[[all]]"
- fields          = {{{[<sFieldsTid>get[allfld-status]match[all]then<allFields>else<flist-filter>]}}}
+ selectedFields  = {{{ [<sFieldsTid>!is[missing]then<selectedFields>else<allFields>]  }}}
+ fields-filter   = {{{ [<sFieldsTid>get[allfld-status]match[all]then<allFields>else<selectedFields>] }}}
  casesensitive   = {{{ [<optionTid>get[case-sensitive]] }}}
  search-mode     = {{{ [<optionTid>get[search-mode]] :else[[words]]}}}
  flag-list       = {{{ [<search-mode>] [<casesensitive>] +[!is[blank]join[,]] }}}
@@ -61,7 +59,7 @@ type: text/vnd.tiddlywiki
        emptyMessage={{{ [<search-terms>!is[blank]then[Search term is too short]] }}} variable=ignore>
 <!-- generate the output -->
 <div class="tc-search-results">
-<$list filter="[subfilter<fields>]" variable=field>
+<$list filter="[subfilter<fields-filter>]" variable=field>
 <$macrocall $name=field-search field=<<field>> />
 </$list>
 </div>

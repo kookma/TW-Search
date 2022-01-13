@@ -1,5 +1,5 @@
 created: 20220106070554427
-modified: 20220111170804296
+modified: 20220113193137519
 tags: 
 title: $:/plugins/kookma/search/ui/inputs
 type: text/vnd.tiddlywiki
@@ -32,10 +32,12 @@ Search in fields... &nbsp;<$transclude tiddler="$:/plugins/kookma/search/ui/opti
 {{$:/core/images/close-button}}
 </$button>
 <!-- switch output format button -->
+<$list filter="[[$:/plugins/kookma/shiraz]!is[missing]] :filter[lookup:no[$:/config/Plugins/Disabled/]match[no]]" variable=ignore>
 <$button class=tc-btn-invisible tooltip="toggle tubular/plain format">
 <$action-listops $tiddler=<<optionTid>> $field="format" $subfilter="+[toggle[tabular]]" />
 {{$:/core/images/menu-button}}
 </$button>
+</$list>
 </$reveal>
 </div>
 

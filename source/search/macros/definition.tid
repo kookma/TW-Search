@@ -1,5 +1,5 @@
 created: 20220104181920406
-modified: 20220112034924060
+modified: 20220113171941840
 tags: $:/tags/Search/Macro
 title: $:/plugins/kookma/search/macros/definition
 type: text/vnd.tiddlywiki
@@ -13,5 +13,6 @@ type: text/vnd.tiddlywiki
 \define excludefieldsTid()  $:/config/Search/exclude-fields
 \define columnsTid()        $:/config/Search/tabular-columns
 
-\define searchScope()   [subfilter{$(searchScopeTid)$}] -[[$(searchTid)$]]
-\define allFields()     $(searchScope)$+[fields[]sort[title]] -[subfilter{$(excludefieldsTid)$}]
+\define searchScope()     [subfilter{$(searchScopeTid)$}] -[[$(searchTid)$]]
+\define allFields()       $(searchScope)$+[fields[]sort[title]] -[subfilter{$(excludefieldsTid)$}]
+\define selectedFields()  [[$(sFieldsTid)$]indexes[]sort[title]]
