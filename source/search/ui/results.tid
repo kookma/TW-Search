@@ -1,5 +1,5 @@
 created: 20220104182348949
-modified: 20220113192453094
+modified: 20220115181926731
 tags: 
 title: $:/plugins/kookma/search/ui/results
 type: text/vnd.tiddlywiki
@@ -32,7 +32,7 @@ type: text/vnd.tiddlywiki
 <dl>
 <dt>$field$ <small>(<$text text=<<matches>>/>)</small></dt>
 <$list filter=<<searchFilter>> >
-<dd><$link/></dd>
+<dd><span title={{{[<livepreviewTid>get[text]match[yes]then{!!$field$}] }}}><$link/></span></dd>
 </$list>
 </dl>
 </$reveal>

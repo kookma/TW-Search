@@ -1,7 +1,7 @@
 caption: Search in Fields
 created: 20220106214308574
 list-after: $:/core/ui/ControlPanel/Settings/TiddlyWiki
-modified: 20220113123746576
+modified: 20220115173035294
 tags: $:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar
 title: $:/plugins/kookma/search/ui/ControlPanel/Settings
 type: text/vnd.tiddlywiki
@@ -26,6 +26,9 @@ These settings let you customise the behaviour of Search in Fields plugin.
 :<label class="kk-switch-label"><$link to=<<excludefieldsTid>>>Excluded fields</$link></label><$edit-text tiddler=<<excludefieldsTid>> field="text" tag=input defualt="" placeholder="enter field name, e.g fld01 [[field two]] " class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<excludefieldsTid>>/>""">{{$:/core/images/refresh-button}}</$button>
 
 :<label class="kk-switch-label"><$link to=<<columnsTid>>>Table columns</$link></label><$edit-text tiddler=<<columnsTid>> field="text" tag=input defualt="" placeholder="enter columns(fields) name" class="kk-search-input"/> <$button tooltip="restore default" class="tc-btn-invisible" actions="""<$action-deletetiddler $tiddler=<<columnsTid>>/>""">{{$:/core/images/refresh-button}}</$button>
+
+; Enable live preview
+:<$checkbox tiddler=<<livepreviewTid>> field="text" checked="yes"> Enable live field preview in plain output</$checkbox>
 
 
 <style>

@@ -1,0 +1,20 @@
+created: 20220116043430621
+description: Ending with numbers
+modified: 20220116043827839
+pattern: \d+$
+tags: $:/tags/Search/Pattern
+title: $:/plugins/kookma/search/patterns/end-with-number
+type: text/vnd.tiddlywiki
+
+!! Match Lines Ending with Numbers
+The numbers at the end of the line can be matched by using $ in the regex. The $ sign is used to express end of the line. The following regex can be used to match numbers at the end of the line.
+
+```
+\d+$
+```
+
+or
+
+```
+\[0-9]+$
+```

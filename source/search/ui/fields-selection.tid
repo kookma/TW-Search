@@ -1,5 +1,5 @@
 created: 20220107091357912
-modified: 20220113142726885
+modified: 20220115163045729
 tags: 
 title: $:/plugins/kookma/search/ui/fields-selection
 type: text/vnd.tiddlywiki
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 \define clearfields(filter)
 <!-- check if *all is not activated and at least one field has been selected -->
 <$list filter="[<sFieldsTid>indexes[]] :intersection[subfilter<__filter__>] +[limit[1]] [<disabledStatus>!match[yes]] +[count[]compare:integer:gteq[2]]" variable=ignore>
-<$button class="tc-btn-invisible" tooltip="Remove selected fields"> {{$:/core/images/close-all-button}}
+<$button class="tc-btn-invisible" tooltip="Uncheck selected fields"> {{$:/core/images/close-all-button}}
 <$list filter=<<__filter__>> variable=fieldname>
 <$action-setfield $tiddler=<<sFieldsTid>> $index=<<fieldname>> />
 </$list>

@@ -1,7 +1,0 @@
-created: 20220111170853440
-description: Start with letters
-modified: 20220111173235828
-pattern: ^[a-zA-z].+$
-tags: $:/tags/Search/Pattern
-title: $:/plugins/kookma/search/patterns/start-with-letter
-type: text/vnd.tiddlywiki

@@ -1,0 +1,16 @@
+created: 20220116045859028
+description: Only lowercase letters
+modified: 20220116050142204
+pattern: ^[a-z]+$
+tags: $:/tags/Search/Pattern
+title: $:/plugins/kookma/search/patterns/only-lowercase-letters
+type: text/vnd.tiddlywiki
+
+; Pattern
+: `^[a-z]+$`
+
+; Explanation
+: `^` asserts position at start of the string
+: `[a-z]` matches a single character in the range between a and z (case sensitive)
+: `+` matches one or more repetitions of preceeding symbol (here lowercase characters)
+: `$` asserts position at end of the string

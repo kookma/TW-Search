@@ -1,5 +1,5 @@
 created: 20220106070554427
-modified: 20220113193137519
+modified: 20220116034648995
 tags: 
 title: $:/plugins/kookma/search/ui/inputs
 type: text/vnd.tiddlywiki
@@ -26,18 +26,18 @@ Search in fields... &nbsp;<$transclude tiddler="$:/plugins/kookma/search/ui/opti
 
 <!-- clear button and tbular/plain output switch button -->
 <$reveal stateTitle=<<searchTid>> stateField=text type=nomatch text=''>
-<!-- clear button -->
-<$button class=tc-btn-invisible tooltip="clear search box">
-<$action-setfield $tiddler=<<searchTid>> $field=text $value=''/>
-{{$:/core/images/close-button}}
-</$button>
-<!-- switch output format button -->
+<!-- switch output format button: show if only Shiraz is installed -->
 <$list filter="[[$:/plugins/kookma/shiraz]!is[missing]] :filter[lookup:no[$:/config/Plugins/Disabled/]match[no]]" variable=ignore>
 <$button class=tc-btn-invisible tooltip="toggle tubular/plain format">
 <$action-listops $tiddler=<<optionTid>> $field="format" $subfilter="+[toggle[tabular]]" />
 {{$:/core/images/menu-button}}
 </$button>
 </$list>
+<!-- clear button -->
+<$button class=tc-btn-invisible tooltip="clear search box">
+<$action-setfield $tiddler=<<searchTid>> $field=text $value=''/>
+{{$:/core/images/close-button}}
+</$button>
 </$reveal>
 </div>
 

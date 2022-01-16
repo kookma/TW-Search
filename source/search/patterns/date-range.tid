@@ -1,0 +1,24 @@
+created: 20220116050423932
+description: Date range
+modified: 20220116052659005
+pattern: (^2019090|^2019091[0-5])
+tags: $:/tags/Search/Pattern
+title: $:/plugins/kookma/search/patterns/date-range
+type: text/vnd.tiddlywiki
+
+Find all tiddlers created on date range 1st to 15th September, 2019
+
+;Pattern
+: `(^2019090|^2019091[0-5])`
+
+;Explanation
+: `(|)` a capturing group. The `|` acts like a boolean OR. Matches the expression before or after the `|`.
+: `^` asserts position at start of the string
+: `2019090` matches characters 2019090 literally 
+:: this returns any tiddler created in 2019, 09 (September). The next `0` stands for day number so it matchs 01 to 09 (the only day numbers with leading zero) 
+: The `|` acts like a boolean OR. Matches the expression before or after the `|`.
+: `^` asserts position at start of the string
+: `2019091` matches characters 2019091 literally
+:: this returns any tiddler created in 2019, 09 (September). The next `1` stands for day number so it matchs and day number started with `1`
+: `[0-5]` match a single character present in the list below [0-5]. `[]` is a character set (character class)
+:: 0-5 a single character in the range between 0 (index 48) and 5 (index 53) (case sensitive)

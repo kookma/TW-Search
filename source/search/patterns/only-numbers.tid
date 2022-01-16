@@ -1,0 +1,20 @@
+created: 20220116041138267
+description: Match only numbers
+modified: 20220116043820718
+pattern: ^\d+$
+tags: $:/tags/Search/Pattern
+title: $:/plugins/kookma/search/patterns/only-numbers
+type: text/vnd.tiddlywiki
+
+;Match Only Number Lines
+:In some cases we may need to match lines those only consist of numbers. These lines do not contains non-numeric characters. The ^ and $ are used to set start and end of line which consist of only numbers.
+
+```
+^\d+$
+```
+
+or
+
+```
+^[0-9]+$
+```
