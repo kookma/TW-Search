@@ -1,6 +1,4 @@
-created: 20220116043306093
 description: Starting with numbers
-modified: 20220116043800755
 pattern: ^\d+
 tags: $:/tags/Search/Pattern
 title: $:/plugins/kookma/search/patterns/start-with-number

@@ -1,6 +1,4 @@
-created: 20220116041138267
 description: Match only numbers
-modified: 20220116043820718
 pattern: ^\d+$
 tags: $:/tags/Search/Pattern
 title: $:/plugins/kookma/search/patterns/only-numbers

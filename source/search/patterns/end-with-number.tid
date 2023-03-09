@@ -1,6 +1,4 @@
-created: 20220116043430621
 description: Ending with numbers
-modified: 20220116043827839
 pattern: \d+$
 tags: $:/tags/Search/Pattern
 title: $:/plugins/kookma/search/patterns/end-with-number

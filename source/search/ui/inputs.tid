@@ -1,10 +1,9 @@
-created: 20220106070554427
-modified: 20220116034648995
 tags: 
 title: $:/plugins/kookma/search/ui/inputs
 type: text/vnd.tiddlywiki
 
 \import [all[tiddlers+shadows]tag[$:/tags/Search/Macro]]
+\whitespace trim 
 
 <!-- search options ui -->
 Search in fields... &nbsp;<$transclude tiddler="$:/plugins/kookma/search/ui/options" mode=inline />
@@ -30,7 +29,7 @@ Search in fields... &nbsp;<$transclude tiddler="$:/plugins/kookma/search/ui/opti
 <$list filter="[[$:/plugins/kookma/shiraz]!is[missing]] :filter[lookup:no[$:/config/Plugins/Disabled/]match[no]]" variable=ignore>
 <$button class=tc-btn-invisible tooltip="toggle tubular/plain format">
 <$action-listops $tiddler=<<optionTid>> $field="format" $subfilter="+[toggle[tabular]]" />
-{{$:/core/images/menu-button}}
+{{$:/plugins/kookma/search/images/table}}
 </$button>
 </$list>
 <!-- clear button -->

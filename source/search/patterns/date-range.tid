@@ -1,6 +1,4 @@
-created: 20220116050423932
 description: Date range
-modified: 20220116052659005
 pattern: (^2019090|^2019091[0-5])
 tags: $:/tags/Search/Pattern
 title: $:/plugins/kookma/search/patterns/date-range

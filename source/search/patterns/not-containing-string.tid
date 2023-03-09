@@ -1,6 +1,4 @@
-created: 20220116044144149
 description: Match not containing string
-modified: 20220116044651587
 pattern: ^((?!badword).)*$
 tags: $:/tags/Search/Pattern
 title: $:/plugins/kookma/search/patterns/not-containing-string
